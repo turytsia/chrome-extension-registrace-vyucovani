@@ -1,0 +1,17 @@
+{
+    "name": "registrator vyucovani",
+    "description": "no description...",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "content_scripts": [{
+        "matches": ["https://www.vut.cz/studis/student.phtml?sn=volba_vyucovani_gr"],
+        "js": ["content.js"]
+    }],
+    "browser_action": {
+        "default_title": "created by @aturytsa",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "storage"
+    ]
+}
