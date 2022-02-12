@@ -18,11 +18,16 @@ timeInput.style.margin = '15px 0'
 readme.style.textAlign = 'center'
 readme.style.margin = '15px 0'
 readme.innerHTML = `#README\nChoose subjects you want to register and\npick time when registration opens.\nWhen it's time, the browser will sign you in automatically.`
+readme.style.border = '2px dashed gray'
+readme.style.fontFamily = 'Arial'
+readme.style.fontSize = '16px'
 
-warning.style.border = '1px solid #AA2121'
+warning.style.fontSize = '16px'
+warning.style.border = '2px dashed #AA2121'
 warning.style.textAlign = 'center'
 warning.style.backgroundColor = '#FFD1D1'
-warning.innerHTML = `#WARNING\nIf you pick 2 the same subjects, you won't be able to register it properly.\nBe aware that extention is still in development phase\nso use it on your risk.\n If you found bug, report it here: italexx.cz@gmail.com`
+warning.innerHTML = `#WARNING\nIf you pick 2 the same subjects, you won't be able to register it properly.\nBe aware that extention is still in development phase\nso use it on your risk. If you found bug, report it here:\nitalexx.cz@gmail.com`
+warning.style.fontFamily = 'Arial'
 
 schedule.prepend(timeInput);
 schedule.prepend(warning);
@@ -45,8 +50,7 @@ timeInput.onchange = (e) => {
     updateTime = e.target.value;
 };
 
-chrome.storage.local.get("subjects", (res) => { // <------------------------
-    console.log(res)
+chrome.storage.local.get("subjects", (res) => {
     subjectsToSave = res.subjects ? [...res.subjects.split(",")] : [];
 
     blocks.map((block, i) => {
@@ -70,10 +74,6 @@ chrome.storage.local.get("subjects", (res) => { // <------------------------
                 subjectsToSave.push(id);
             }
             chrome.storage.local.set({ subjects: subjectsToSave.toString() });
-
-            chrome.storage.local.get("subjects", (res) => {
-                console.log(res);
-            });
         }
 
         checkbox.addEventListener("click", checkboxClickHandler);
@@ -102,7 +102,6 @@ chrome.storage.local.get("subjects", (res) => { // <------------------------
             for (let i = 0; i < checkboxes.length; i++) {
                 if (subjectsToSave.includes(inputs[i].id)) {
                     inputs[i].parentElement.click();
-                    console.log('click')
                 }
             }
 
