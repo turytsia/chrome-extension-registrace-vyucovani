@@ -28,7 +28,7 @@ schedule.prepend(timeInput);
 schedule.prepend(warning);
 schedule.prepend(readme);
 
-
+//chrome.storage.local.clear()
 
 const blocks = Array.from(document.getElementsByClassName("blok-kapacita"));
 const parentInputs = Array.from(
@@ -45,8 +45,9 @@ timeInput.onchange = (e) => {
     updateTime = e.target.value;
 };
 
-chrome.storage.local.get("subjects", (res) => {
-    subjectsToSave = [...res.subjects.split(",")];
+chrome.storage.local.get("subjects", (res) => { // <------------------------
+    console.log(res)
+    subjectsToSave = res.subjects ? [...res.subjects.split(",")] : [];
 
     blocks.map((block, i) => {
         const checkbox = document.createElement("input");

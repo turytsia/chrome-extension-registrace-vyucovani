@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "manifest_version": 2,
     "content_scripts": [{
-        "matches": ["https://www.vut.cz/studis/student.phtml?sn=volba_vyucovani_gr"],
+        "matches": ["<all_urls>"],
         "js": ["content.js"]
     }],
     "browser_action": {
